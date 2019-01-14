@@ -1,4 +1,4 @@
-import { elements, elementStrings } from './base';
+import { elements } from './base';
 
 export const renderItem = item => {
     const markup = `
@@ -16,9 +16,28 @@ export const renderItem = item => {
         </li>
     `;
     elements.shopping.insertAdjacentHTML('beforeend', markup);
-}
+};
+
+
+export const showDeleteBtn = item => {
+    const markupBtn = `
+        <p>I'm an example of inserted text</p>
+        <button class="shopping__delete_all">
+                <svg>
+                    <use href="img/icons.svg#icon-circle-with-cross"></use>
+                </svg>
+                Delete all
+        </button>
+        `;
+        
+        elements.shopping.insertAdjacentHTML('beforeend', markupBtn);
+};
+
+export const deleteAllListBtn = item => {
+
+};
 
 export const deleteItem = id => {
     const item = document.querySelector(`[data-itemid="${id}"]`);
     if (item) item.parentElement.removeChild(item);
-}
+};

@@ -118,6 +118,11 @@ const controlList = () => {
         const item = state.list.addItem(el.count, el.unit, el.ingredient);
         listView.renderItem(item);
     });
+
+    //Delete all grocery items on button click
+    //if (state.list) => 
+    showDeleteBtn();
+    window.elements.shoppingDelBtn('click', deleteAllListBtn);
 }
 
 //Handle delete and update list item events
