@@ -121,9 +121,14 @@ const controlList = () => {
 
     //Delete all grocery items on button click
     //if (state.list) => 
-    showDeleteBtn();
-    window.elements.shoppingDelBtn('click', deleteAllListBtn);
+    
+    //Show the Delete List button
+    listView.showDeleteBtn('show');
+    document.querySelector('.shopping__delete_all').addEventListener('click', listView.deleteAllListBtn);
+
 }
+
+
 
 //Handle delete and update list item events
     elements.shopping.addEventListener('click', e => {

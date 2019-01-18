@@ -19,21 +19,34 @@ export const renderItem = item => {
 };
 
 
-export const showDeleteBtn = item => {
-    const markupBtn = `
-        <p>I'm an example of inserted text</p>
-        <button class="shopping__delete_all">
+export const showDeleteBtn = (visibility) => {
+    if (visibility === 'show') {
+        if (document.contains(document.getElementById("deleteList")))  {
+            listView.showDeleteBtn('remove');
+        }
+    
+        const markupBtn = `
+        <button class="shopping__delete_all btn-small recipe__btn recipe__btn--add" id="deleteList">
                 <svg>
                     <use href="img/icons.svg#icon-circle-with-cross"></use>
                 </svg>
                 Delete all
         </button>
         `;
-        
-        elements.shopping.insertAdjacentHTML('beforeend', markupBtn);
+
+        elements.shopping.insertAdjacentHTML('afterbegin', markupBtn);
+    }
+    if (visibility === 'remove') {
+        elements.shopping.removeChild(document.querySelector('.shopping__delete_all'));
+    }
 };
 
 export const deleteAllListBtn = item => {
+    Array.from(document.getElementsByClassName('shopping__item')).forEach(element => {
+        element.parentElement.removeChild(element);
+    });
+
+    showDeleteBtn('remove');
 
 };
 
